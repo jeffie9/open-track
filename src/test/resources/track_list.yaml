@@ -1,0 +1,3 @@
+- !track {centerX: 5.0, centerY: 6.0, endX: 3.0, endY: 4.0, startX: 1.0, startY: 2.0}
+- !track {centerX: 5.1, centerY: 6.1, endX: 3.1, endY: 4.1, startX: 1.1, startY: 2.1}
+- !track {centerX: 5.2, centerY: 6.2, endX: 3.2, endY: 4.2, startX: 1.2, startY: 2.2}
