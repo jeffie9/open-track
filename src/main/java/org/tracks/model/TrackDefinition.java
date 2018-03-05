@@ -1,11 +1,12 @@
 package org.tracks.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class TrackDefinition {
     private String id;
     private String description;
-    private List<Track> tracks;
+    private List<TrackSegment> tracks = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -23,11 +24,11 @@ public class TrackDefinition {
         this.description = description;
     }
 
-    public List<Track> getTracks() {
+    public List<TrackSegment> getTracks() {
         return tracks;
     }
 
-    public void setTracks(List<Track> tracks) {
+    public void setTracks(List<TrackSegment> tracks) {
         this.tracks = tracks;
     }
 

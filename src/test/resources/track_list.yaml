@@ -1,3 +1,15 @@
-- !track {centerX: 5.0, centerY: 6.0, endX: 3.0, endY: 4.0, startX: 1.0, startY: 2.0}
-- !track {centerX: 5.1, centerY: 6.1, endX: 3.1, endY: 4.1, startX: 1.1, startY: 2.1}
-- !track {centerX: 5.2, centerY: 6.2, endX: 3.2, endY: 4.2, startX: 1.2, startY: 2.2}
+- !!org.tracks.model.TrackDefinition
+  description: null
+  id: null
+  tracks:
+  - {centerX: 5.0, centerY: 6.0, endX: 3.0, endY: 4.0, startX: 1.0, startY: 2.0}
+  - {centerX: 5.1, centerY: 6.1, endX: 3.1, endY: 4.1, startX: 1.1, startY: 2.1}
+  - {centerX: 5.2, centerY: 6.2, endX: 3.2, endY: 4.2, startX: 1.2, startY: 2.2}
+- !!org.tracks.model.TrackDefinition
+  description: null
+  id: null
+  tracks:
+  - {centerX: 15.0, centerY: 16.0, endX: 13.0, endY: 14.0, startX: 11.0, startY: 12.0}
+  - {centerX: 15.1, centerY: 16.1, endX: 13.1, endY: 14.1, startX: 11.1, startY: 12.1}
+  - {centerX: 15.2, centerY: 16.2, endX: 13.2, endY: 14.2, startX: 11.2, startY: 12.2}
+

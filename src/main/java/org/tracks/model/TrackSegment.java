@@ -1,6 +1,6 @@
 package org.tracks.model;
 
-public class Track {
+public class TrackSegment {
     private double startX;
     private double startY;
     private double endX;
@@ -59,7 +59,7 @@ public class Track {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("Track [startX=");
+        builder.append("TrackSegment [startX=");
         builder.append(startX);
         builder.append(", startY=");
         builder.append(startY);

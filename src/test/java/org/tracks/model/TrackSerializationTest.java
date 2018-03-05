@@ -18,39 +18,68 @@ import org.yaml.snakeyaml.representer.Representer;
 public class TrackSerializationTest {
     @Test
     public void testDumpTracks() {
-        List<Track> tracks = new ArrayList<>();
-        Track t = new Track();
-        t.setStartX(1.0);
-        t.setStartY(2.0);
-        t.setEndX(3.0);
-        t.setEndY(4.0);
-        t.setCenterX(5.0);
-        t.setCenterY(6.0);
-        tracks.add(t);
-        t = new Track();
-        t.setStartX(1.1);
-        t.setStartY(2.1);
-        t.setEndX(3.1);
-        t.setEndY(4.1);
-        t.setCenterX(5.1);
-        t.setCenterY(6.1);
-        tracks.add(t);
-        t = new Track();
-        t.setStartX(1.2);
-        t.setStartY(2.2);
-        t.setEndX(3.2);
-        t.setEndY(4.2);
-        t.setCenterX(5.2);
-        t.setCenterY(6.2);
-        tracks.add(t);
+        List<TrackDefinition> tracks = new ArrayList<>();
+        TrackDefinition td = new TrackDefinition();
+        TrackSegment ts = new TrackSegment();
+        ts.setStartX(1.0);
+        ts.setStartY(2.0);
+        ts.setEndX(3.0);
+        ts.setEndY(4.0);
+        ts.setCenterX(5.0);
+        ts.setCenterY(6.0);
+        td.getTracks().add(ts);
+        ts = new TrackSegment();
+        ts.setStartX(1.1);
+        ts.setStartY(2.1);
+        ts.setEndX(3.1);
+        ts.setEndY(4.1);
+        ts.setCenterX(5.1);
+        ts.setCenterY(6.1);
+        td.getTracks().add(ts);
+        ts = new TrackSegment();
+        ts.setStartX(1.2);
+        ts.setStartY(2.2);
+        ts.setEndX(3.2);
+        ts.setEndY(4.2);
+        ts.setCenterX(5.2);
+        ts.setCenterY(6.2);
+        td.getTracks().add(ts);
+        tracks.add(td);
+
+        td = new TrackDefinition();
+        ts = new TrackSegment();
+        ts.setStartX(11.0);
+        ts.setStartY(12.0);
+        ts.setEndX(13.0);
+        ts.setEndY(14.0);
+        ts.setCenterX(15.0);
+        ts.setCenterY(16.0);
+        td.getTracks().add(ts);
+        ts = new TrackSegment();
+        ts.setStartX(11.1);
+        ts.setStartY(12.1);
+        ts.setEndX(13.1);
+        ts.setEndY(14.1);
+        ts.setCenterX(15.1);
+        ts.setCenterY(16.1);
+        td.getTracks().add(ts);
+        ts = new TrackSegment();
+        ts.setStartX(11.2);
+        ts.setStartY(12.2);
+        ts.setEndX(13.2);
+        ts.setEndY(14.2);
+        ts.setCenterX(15.2);
+        ts.setCenterY(16.2);
+        td.getTracks().add(ts);
+        tracks.add(td);
 
         Representer representer = new Representer();
-        representer.addClassTag(Track.class, new Tag("!track"));
+        //representer.addClassTag(TrackSegment.class, new Tag("!track"));
         //representer.addClassTag(Track.class, Tag.MAP);
         DumperOptions options = new DumperOptions();
         //options.setCanonical(true);
 
-        Yaml yaml = new Yaml(representer, options);
+        Yaml yaml = new Yaml(/*representer, options*/);
         StringWriter writer = new StringWriter();
 
         yaml.dump(tracks, writer);
@@ -60,10 +89,10 @@ public class TrackSerializationTest {
     @Test
     public void testLoadTracks() throws Exception {
         Constructor constructor = new Constructor(List.class);
-        TypeDescription trackDescription = new TypeDescription(Track.class);
+        TypeDescription trackDescription = new TypeDescription(TrackSegment.class);
         trackDescription.setTag("!track");
         constructor.addTypeDescription(trackDescription);
-        Yaml yaml = new Yaml(constructor);
+        Yaml yaml = new Yaml(/*constructor*/);
 
         InputStream input = new FileInputStream(new File("src/test/resources/track_list.yaml"));
         Object data = yaml.load(input);

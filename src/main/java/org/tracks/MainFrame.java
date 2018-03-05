@@ -1,5 +1,6 @@
 package org.tracks;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,19 +15,21 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 public class MainFrame extends Application {
     private final Logger LOG = LoggerFactory.getLogger(MainFrame.class);
-    private Stage primaryStage;
+    private static Stage primaryStage;
     private Map<String, Pane> screenMap = new HashMap<>();
+    private FileChooser fileChooser = new FileChooser();
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
-        screenMap.put("layoutEditor", FXMLLoader.load(getClass().getResource("view/LayoutEditView.fxml")));
-        screenMap.put("layoutRunner", FXMLLoader.load(getClass().getResource("view/RunView.fxml")));
-        screenMap.put("trackEditor",  FXMLLoader.load(getClass().getResource("view/TrackEditView.fxml")));
+        addView("layoutEditor", "view/LayoutEditView.fxml");
+        addView("layoutRunner", "view/RunView.fxml");
+        addView("trackEditor", "view/TrackEditView.fxml");
         addViewMenu("layoutEditor", "Layout Editor");
         addViewMenu("layoutRunner", "Runner");
         addViewMenu("trackEditor", "Track Editor");
@@ -40,6 +43,12 @@ public class MainFrame extends Application {
 
     public static void main(String[] args) {
         Application.launch(args);
+    }
+
+    void addView(String viewId, String viewResource) throws Exception {
+        Pane pane = Pane.class.cast(FXMLLoader.load(getClass().getResource(viewResource)));
+        pane.setUserData(this);
+        screenMap.put(viewId, pane);
     }
 
     void addViewMenu(String id, String label) throws Exception {
@@ -58,5 +67,9 @@ public class MainFrame extends Application {
         if (event.getSource() instanceof MenuItem) {
             primaryStage.getScene().setRoot(screenMap.get(((MenuItem)event.getSource()).getId()));
         }
+    }
+
+    static Stage getPrimaryStage() {
+        return primaryStage;
     }
 }
